@@ -1,0 +1,26 @@
+@mixin gradientPrimary {
+  background-image: linear-gradient(
+    150deg,
+    $color-primary,
+    $color-primary-dark
+  );
+}
+@mixin gradientBlack {
+  background-image: linear-gradient(147deg, #000000, #04619f 74%);
+}
+// text
+
+@mixin customTextGradient($col1, $col2) {
+  background-image: linear-gradient(300deg, $col1 0%, $col2 74%);
+  display: inline-block;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@mixin silverTextGradient {
+  @include customTextGradient(#f6f2f2, #d9d9d9);
+}
+
+@mixin yellowTextGradient {
+  @include customTextGradient(#c00b0b, #04619f);
+}

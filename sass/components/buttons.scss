@@ -1,0 +1,15 @@
+.btn {
+  padding: 1.5rem 2rem;
+  border-radius: 0.8rem;
+  @include gradientPrimary;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: translateY(0.5rem);
+  }
+}

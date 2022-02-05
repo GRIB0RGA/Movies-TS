@@ -1,0 +1,90 @@
+.mainConatiner {
+  @include gradientBlack;
+  min-height: 100vh;
+  padding: 5rem;
+}
+.movieContainer {
+  margin: 0 5rem;
+  display: flex;
+  justify-content: center;
+  .country {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .country__specs {
+    display: flex;
+    gap: 1rem;
+  }
+}
+.movie {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3rem;
+  &__paragraph {
+    font-weight: 700;
+    font-size: 3rem;
+    @include silverTextGradient;
+  }
+  &__flag {
+    width: 5rem;
+  }
+
+  &__title {
+    @include silverTextGradient;
+    font-size: 5rem;
+    text-transform: uppercase;
+  }
+}
+/* global */
+
+.SearchArea {
+  width: 80vw;
+  display: flex;
+  margin: 0 auto;
+  padding: 6rem 0 4rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  #searchInput {
+    width: 50%;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    transition: all 0.3s;
+    &:focus {
+      outline: none;
+      transform: scale(1.02);
+    }
+  }
+}
+.calculatorArea {
+  @extend .SearchArea;
+}
+.resultsArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 5rem;
+  font-size: 5rem;
+  &--minutes {
+    @include silverTextGradient;
+  }
+  &--population {
+    @include silverTextGradient;
+  }
+}
+
+.excersize2__input {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  transition: all 0.3s;
+  &:focus {
+    outline: none;
+    transform: scale(1.02);
+  }
+}

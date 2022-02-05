@@ -1,0 +1,33 @@
+{
+  "name": "js-development-environment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node serverScript/server.js",
+    "compile:sass": "node-sass sass/main.scss src/styles.css -w",
+    "localtunnel": "lt --port 3000",
+    "share": "npm-run-all --parallel start localtunnel",
+    "build": "webpack --config webpack.config.js",
+    "format:all": "prettier --write \"src/**/*.js\"",
+    "lint": "eslint src"
+  },
+  "author": "Griborga (giorgi iremadze)",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/node": "^7.16.8",
+    "eslint": "^8.6.0",
+    "express": "^4.17.2",
+    "html-webpack-plugin": "^5.5.0",
+    "localtunnel": "^2.0.2",
+    "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5",
+    "open": "^8.4.0",
+    "prettier": "^2.5.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.5",
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-middleware": "^5.3.0"
+  }
+}
