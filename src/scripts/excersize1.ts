@@ -1,8 +1,8 @@
-import { getMovie, getCountry, MovieInt } from "./apiCalls";
+import { getMovie, getCountry } from "./apiCalls";
 // prettier-ignore
-const injectHtml = (title:string, img:string, actors:string, year:number) => {
+const injectHtml = (title:string, img:string, actors:string, year:number) :void => {
     // prettier-ignore
-  const whereToInject :HTMLInputElement = <HTMLInputElement> document.querySelector(`.movieContainer`);
+  const whereToInject :HTMLDivElement = <HTMLDivElement> document.querySelector(`.movieContainer`);
   const html = `  
     <div class="movie">
       
@@ -17,10 +17,10 @@ const injectHtml = (title:string, img:string, actors:string, year:number) => {
   whereToInject.innerHTML = ``;
   whereToInject.insertAdjacentHTML(`beforeend`, html);
 };
-
-const part2Injector = (country: string, currency: string, flag: string) => {
+// prettier-ignore
+const part2Injector = (country: string, currency: string, flag: string) :void=> {
   // prettier-ignore
-  const whereToInject :HTMLInputElement = <HTMLInputElement> document.querySelector(`.country`);
+  const whereToInject :HTMLDivElement = <HTMLDivElement> document.querySelector(`.country`);
   const html = `
       <div class="country__specs">
       <p class="movie__paragraph movie__paragraph--country">${country}</p>
@@ -30,23 +30,18 @@ const part2Injector = (country: string, currency: string, flag: string) => {
   whereToInject.insertAdjacentHTML(`beforeend`, html);
 };
 
-export async function getData() {
+export async function getData(): Promise<void> {
   // prettier-ignore
   const searchInput :HTMLInputElement = <HTMLInputElement>document.getElementById(`searchInput`);
-  const movie: MovieInt = await getMovie(searchInput.value);
-  
-  const actors = movie.Actors.split(", ")
-    .map((x: string) => x.split(" ").slice(0, 1))
+  const movie = await getMovie(searchInput.value);
+  const actorNames = movie.actors
+    .map((x) => x.split(" ").slice(0, 1))
     .join(", ");
-  const countriesArr = movie.Country.split(", ");
 
-  injectHtml(movie.Title, movie.Poster, actors, Number(movie.Year));
+  injectHtml(movie.title, movie.poster, actorNames, movie.year);
 
-  for (let country of countriesArr) {
-    console.log(123);
+  movie.country.forEach(async (country: string) => {
     const countryObj = await getCountry(country);
-    const currency = Object.keys(countryObj[0].currencies)[0];
-    const flags = countryObj[0].flags.png;
-    part2Injector(country, currency, flags);
-  }
+    part2Injector(country, countryObj.currency, countryObj.flag);
+  });
 }

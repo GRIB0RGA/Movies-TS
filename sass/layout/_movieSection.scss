@@ -20,7 +20,7 @@
 .movie {
   display: flex;
   flex-direction: column;
-
+  align-items: center;
   gap: 3rem;
   &__paragraph {
     font-weight: 700;
@@ -35,6 +35,9 @@
     @include silverTextGradient;
     font-size: 5rem;
     text-transform: uppercase;
+  }
+  &__img {
+    max-width: 45rem;
   }
 }
 /* global */

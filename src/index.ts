@@ -1,5 +1,5 @@
 import { getData } from "./scripts/excersize1";
-// import { getDataForPart2 } from "./scripts/excersize2";
+import { getDataForPart2 } from "./scripts/excersize2";
 // prettier-ignore
 const switchBtn :HTMLButtonElement = <HTMLButtonElement>document.getElementById(`switchExcersize`);
 // prettier-ignore
@@ -20,5 +20,4 @@ const excersizeSwitcher = () => {
 // event handlers
 switchBtn.addEventListener(`click`, excersizeSwitcher);
 searchBtn.addEventListener(`click`, getData);
-// calculateBtn.addEventListener(`click`, getDataForPart2);
-console.log(123)
+calculateBtn.addEventListener(`click`, getDataForPart2);

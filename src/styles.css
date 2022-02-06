@@ -48,6 +48,7 @@ body {
 .movie {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 3rem; }
   .movie__paragraph {
     font-weight: 700;
@@ -67,6 +68,8 @@ body {
     color: transparent;
     font-size: 5rem;
     text-transform: uppercase; }
+  .movie__img {
+    max-width: 45rem; }
 
 /* global */
 .SearchArea, .calculatorArea {
