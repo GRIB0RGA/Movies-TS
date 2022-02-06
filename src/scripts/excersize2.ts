@@ -27,6 +27,7 @@ export async function getDataForPart2(): Promise<void> {
   // prettier-ignore
   const uniqueCountryArr = [...new Set(getRuntimeAndMovieCountries.map((x) => x.movieCountry).flat())];
 
+  //: number[] უბრალოდ ჩემთვის კარგად რო იკითხებოდეს მაგითომ მივამატე
   const getPopulations: number[] = await Promise.all(
     uniqueCountryArr.map((country) => getCountry(country))
   ).then((countryObjArr) =>
