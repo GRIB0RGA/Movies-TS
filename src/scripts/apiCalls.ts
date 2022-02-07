@@ -18,11 +18,11 @@ export const getMovie = async (title: string): Promise<MovieInt> => {
   const fetchMovie  = await fetch(`http://www.omdbapi.com/?t=${title}&&apikey=6d659266`);
   const movieObj = await fetchMovie.json();
   return {
-    actors: movieObj.Actors.split(", "),
+    actors: movieObj.Actors?.split(", "),
     title: movieObj.Title,
     poster: movieObj.Poster,
     year: Number(movieObj.Year),
-    country: movieObj.Country.split(", "),
+    country: movieObj.Country?.split(", "),
     runtime: parseInt(movieObj.Runtime),
   };
 };
@@ -34,8 +34,9 @@ export const getCountry = async (country: string): Promise<CountryInt> => {
   countryObj = countryObj[0];
 
   return {
+    // prettier-ignore
     currency: Object.keys(countryObj.currencies)[0],
-    flag: countryObj.flags.png,
-    population: countryObj.population,
+    flag: countryObj?.flags.png,
+    population: countryObj?.population,
   };
 };
